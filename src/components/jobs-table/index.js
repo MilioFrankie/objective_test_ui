@@ -4,7 +4,7 @@ import JobsTableBody from "./jobs-table-body";
 import JobsTableFooter from "./jobs-table-footer";
 import JobsTableHeader from "./jobs-table-header";
 
-const JOBS = gql`
+export const JOBS = gql`
   {
     allJobs {
       name
