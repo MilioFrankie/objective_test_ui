@@ -1,5 +1,5 @@
-import React from 'react';
-import JobsTable from './components/jobs-table'
+import React from "react";
+import JobsTable from "./components/jobs-table";
 
 function App() {
   return (

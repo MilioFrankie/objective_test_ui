@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import JobsTableBody from './jobs-table-body'
+import JobsTableBody from "./jobs-table-body";
+import JobsTableFooter from "./jobs-table-footer";
+import JobsTableHeader from "./jobs-table-header";
 
 const JOBS = gql`
   {
@@ -24,33 +26,15 @@ const JOBS = gql`
 
 function JobsTable() {
   const { loading, error, data } = useQuery(JOBS);
-  const headers = [
-    "Job",
-    "Applicant Name",
-    "Email Address",
-    "Website",
-    "Skills",
-    "Cover Letter Paragraph",
-  ];
 
-  if(error) return <h1>Ooop something went wrong {error} </h1>
-  if(loading) return <h1>...loading</h1>
+  if (error) return <h1>Ooops something went wrong {error} </h1>;
+  if (loading) return <h1>...loading</h1>;
 
   return (
     <table className="job-applicants">
-      <thead>
-        <tr>
-          {headers.map((header, index) => (
-            <th key={index}>{header}</th>
-          ))}
-        </tr>
-      </thead>
-      <JobsTableBody data={data}/>
-      <tfoot>
-        <tr>
-          <td colSpan="6"> x Applicants, x Unique Skills</td>
-        </tr>
-      </tfoot>
+      <JobsTableHeader />
+      <JobsTableBody data={data} />
+      <JobsTableFooter data={data} />
     </table>
   );
 }
